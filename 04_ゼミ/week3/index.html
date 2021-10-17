@@ -10,13 +10,26 @@
     <h2>配列を使ったメモアプリ</h2>
     <input type="text" id="memo-input" />
     <button id="add-button">保存</button>
+    <button id="sort-button">並び替え</button>
     <div id="memo-container"></div>
     <script>
       const memoInput = document.getElementById("memo-input")
       const addButton = document.getElementById("add-button")
       const memoContainer = document.getElementById("memo-container")
+      const sortButton = document.getElementById("sort-button")
 
       let memos = []
+
+      sortButton.onclick = function() {
+        memoContainer.textContent = ""
+        memos.sort()
+
+        for (let i = 0; i < memos.length; i++) {
+          const div = document.createElement("div")
+          div.textContent = memos[i]
+          memoContainer.append(div)
+        }
+      }
 
       addButton.onclick = function() {
         // inputに入力した内容を取得する
